@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+</head>
+<body>
+    <h2>Login with Google</h2>
+    <button id="login-btn">Sign in with Google</button>
+
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+    apiKey: "AIzaSyClhEYEfda7mJJE8IuPmbG1T5zMM7Kh4_s",
+    authDomain: "posting-53ee8.firebaseapp.com",
+    projectId: "posting-53ee8",
+    storageBucket: "posting-53ee8.firebasestorage.app",
+    messagingSenderId: "304055644461",
+    appId: "1:304055644461:web:a101285d086fcd399d23a4"
+  };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        document.getElementById("login-btn").addEventListener("click", () => {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithPopup(provider)
+            .then((result) => {
+                const user = result.user;
+                localStorage.setItem("loginState", "true");
+                localStorage.setItem("userName", user.displayName);
+                window.location.href = "home2.html"; // Redirect to home page
+            })
+            .catch((error) => {
+                console.error("Login Error: ", error.message);
+                alert("Login failed: " + error.message);
+            });
+        });
+    </script>
+</body>
+</html>
