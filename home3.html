@@ -7,10 +7,95 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    h2, h3 {
+        color: #333;
+        text-align: center;
+    }
+
+    #username {
+        color: #007bff;
+    }
+
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        display: block; /* Ensures the button is treated as a block element */
+        margin: 10px auto; /* Centers the button horizontally */
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    textarea, input[type="file"] {
+        width: 100%;
+        max-width: 500px;
+        margin: 10px auto;
+        display: block;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    textarea {
+        resize: none;
+        height: 100px;
+    }
+
+    #post-feed {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 10px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    #post-feed div {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+
+    #post-feed img {
+        max-width: 100%;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    textarea::placeholder {
+        color: #aaa;
+    }
+
+    p {
+        margin: 5px 0;
+    }
+
+    strong {
+        color: #007bff;
+    }
+</style>
+    
 </head>
 <body>
     <h2>Welcome, <span id="username"></span></h2>
-    <button id="logout-btn">Logout</button>
+    <button id="logout-btn" >Logout</button>
 
     <h3>Create a Post</h3>
     <textarea id="post-text" placeholder="Write something..."></textarea>
@@ -35,7 +120,7 @@
 
         // Redirect if not logged in
         if (localStorage.getItem("loginState") !== "true") {
-            window.location.href = "login.html";
+            window.location.href = "index.html";
         } else {
             document.getElementById("username").innerText = localStorage.getItem("userName");
         }
