@@ -41,7 +41,7 @@
         // Redirect if not logged in
         if (localStorage.getItem("loginState") !== "true") {
             console.warn("User not logged in. Redirecting...");
-            window.location.href = "login.html";
+            window.location.href = "index.html";
         } else {
             document.getElementById("username").innerText = localStorage.getItem("userName");
             console.log("User logged in:", localStorage.getItem("userName"));
@@ -51,7 +51,7 @@
         document.getElementById("logout-btn").addEventListener("click", () => {
             localStorage.removeItem("loginState");
             localStorage.removeItem("userName");
-            window.location.href = "https://himamshus06.github.io/posts/";
+            window.location.href = "index.html";
         });
 
         // Post Message
